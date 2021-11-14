@@ -7,13 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		817B9687273E827C0062E6AF /* reelsyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B9686273E827C0062E6AF /* reelsyncApp.swift */; };
-		817B9689273E827C0062E6AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B9688273E827C0062E6AF /* ContentView.swift */; };
+		817B9687273E827C0062E6AF /* ReelsyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B9686273E827C0062E6AF /* ReelsyncApp.swift */; };
+		817B9689273E827C0062E6AF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B9688273E827C0062E6AF /* HomeView.swift */; };
 		817B968B273E827D0062E6AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 817B968A273E827D0062E6AF /* Assets.xcassets */; };
 		817B968E273E827D0062E6AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 817B968D273E827D0062E6AF /* Preview Assets.xcassets */; };
 		817B9698273E827D0062E6AF /* reelsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B9697273E827D0062E6AF /* reelsyncTests.swift */; };
 		817B96A2273E827D0062E6AF /* reelsyncUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B96A1273E827D0062E6AF /* reelsyncUITests.swift */; };
 		817B96A4273E827E0062E6AF /* reelsyncUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B96A3273E827E0062E6AF /* reelsyncUITestsLaunchTests.swift */; };
+		817B96B5273E84C00062E6AF /* VideoEditorSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 817B96B4273E84C00062E6AF /* VideoEditorSDK */; };
+		817B96BB273E87D10062E6AF /* ReelDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B96BA273E87D10062E6AF /* ReelDetailView.swift */; };
+		817B96BF273E888B0062E6AF /* SoundMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817B96BE273E888B0062E6AF /* SoundMeta.swift */; };
+		81E2BB1A273E96530069964F /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E2BB19273E96530069964F /* PhotoPicker.swift */; };
+		81E2BB1C273EB2570069964F /* ReelsyncViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E2BB1B273EB2570069964F /* ReelsyncViewModel.swift */; };
+		81E2BB1E273EBD880069964F /* VideoTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E2BB1D273EBD880069964F /* VideoTemplate.swift */; };
+		81E2BB21273ECF330069964F /* PhotoProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E2BB20273ECF330069964F /* PhotoProcessor.swift */; };
+		81E2BB23273ECF9B0069964F /* ReelDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E2BB22273ECF9B0069964F /* ReelDatabase.swift */; };
+		81E2BB26273EF0C60069964F /* VideoSDKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E2BB25273EF0C60069964F /* VideoSDKView.swift */; };
+		81E2BB29273F00EC0069964F /* skater.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 81E2BB28273F00EC0069964F /* skater.mp4 */; };
+		81E2BB2B273F141A0069964F /* PhotoPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E2BB2A273F141A0069964F /* PhotoPickerModel.swift */; };
+		81E2BB36274179600069964F /* SampleImg4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81E2BB2D2741795E0069964F /* SampleImg4.jpg */; };
+		81E2BB37274179600069964F /* SampleImg6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81E2BB2E2741795E0069964F /* SampleImg6.jpg */; };
+		81E2BB38274179600069964F /* SampleImg3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81E2BB2F2741795F0069964F /* SampleImg3.jpg */; };
+		81E2BB39274179600069964F /* SampleImg5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81E2BB302741795F0069964F /* SampleImg5.jpg */; };
+		81E2BB3A274179600069964F /* SampleImg2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81E2BB312741795F0069964F /* SampleImg2.jpg */; };
+		81E2BB3B274179600069964F /* SampleImg9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81E2BB322741795F0069964F /* SampleImg9.jpg */; };
+		81E2BB3C274179600069964F /* SampleImg8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81E2BB332741795F0069964F /* SampleImg8.jpg */; };
+		81E2BB3D274179600069964F /* SampleImg1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81E2BB34274179600069964F /* SampleImg1.jpg */; };
+		81E2BB3E274179600069964F /* SampleImg7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81E2BB35274179600069964F /* SampleImg7.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +55,8 @@
 
 /* Begin PBXFileReference section */
 		817B9683273E827C0062E6AF /* reelsync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reelsync.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		817B9686273E827C0062E6AF /* reelsyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reelsyncApp.swift; sourceTree = "<group>"; };
-		817B9688273E827C0062E6AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		817B9686273E827C0062E6AF /* ReelsyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelsyncApp.swift; sourceTree = "<group>"; };
+		817B9688273E827C0062E6AF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		817B968A273E827D0062E6AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		817B968D273E827D0062E6AF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		817B9693273E827D0062E6AF /* reelsyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = reelsyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +64,25 @@
 		817B969D273E827D0062E6AF /* reelsyncUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = reelsyncUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		817B96A1273E827D0062E6AF /* reelsyncUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reelsyncUITests.swift; sourceTree = "<group>"; };
 		817B96A3273E827E0062E6AF /* reelsyncUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reelsyncUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		817B96BA273E87D10062E6AF /* ReelDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelDetailView.swift; sourceTree = "<group>"; };
+		817B96BE273E888B0062E6AF /* SoundMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundMeta.swift; sourceTree = "<group>"; };
+		81E2BB19273E96530069964F /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
+		81E2BB1B273EB2570069964F /* ReelsyncViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelsyncViewModel.swift; sourceTree = "<group>"; };
+		81E2BB1D273EBD880069964F /* VideoTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTemplate.swift; sourceTree = "<group>"; };
+		81E2BB20273ECF330069964F /* PhotoProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoProcessor.swift; sourceTree = "<group>"; };
+		81E2BB22273ECF9B0069964F /* ReelDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelDatabase.swift; sourceTree = "<group>"; };
+		81E2BB25273EF0C60069964F /* VideoSDKView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSDKView.swift; sourceTree = "<group>"; };
+		81E2BB28273F00EC0069964F /* skater.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = skater.mp4; sourceTree = "<group>"; };
+		81E2BB2A273F141A0069964F /* PhotoPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerModel.swift; sourceTree = "<group>"; };
+		81E2BB2D2741795E0069964F /* SampleImg4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SampleImg4.jpg; sourceTree = "<group>"; };
+		81E2BB2E2741795E0069964F /* SampleImg6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SampleImg6.jpg; sourceTree = "<group>"; };
+		81E2BB2F2741795F0069964F /* SampleImg3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SampleImg3.jpg; sourceTree = "<group>"; };
+		81E2BB302741795F0069964F /* SampleImg5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SampleImg5.jpg; sourceTree = "<group>"; };
+		81E2BB312741795F0069964F /* SampleImg2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SampleImg2.jpg; sourceTree = "<group>"; };
+		81E2BB322741795F0069964F /* SampleImg9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SampleImg9.jpg; sourceTree = "<group>"; };
+		81E2BB332741795F0069964F /* SampleImg8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SampleImg8.jpg; sourceTree = "<group>"; };
+		81E2BB34274179600069964F /* SampleImg1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SampleImg1.jpg; sourceTree = "<group>"; };
+		81E2BB35274179600069964F /* SampleImg7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SampleImg7.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				817B96B5273E84C00062E6AF /* VideoEditorSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,8 +134,12 @@
 		817B9685273E827C0062E6AF /* reelsync */ = {
 			isa = PBXGroup;
 			children = (
-				817B9686273E827C0062E6AF /* reelsyncApp.swift */,
-				817B9688273E827C0062E6AF /* ContentView.swift */,
+				81E2BB27273F00DD0069964F /* SampleData */,
+				81E2BB24273EEFB50069964F /* Views */,
+				81E2BB1F273ECEE60069964F /* Lib */,
+				81E2BB18273E95560069964F /* ViewModel */,
+				817B96BD273E887A0062E6AF /* Model */,
+				817B9686273E827C0062E6AF /* ReelsyncApp.swift */,
 				817B968A273E827D0062E6AF /* Assets.xcassets */,
 				817B968C273E827D0062E6AF /* Preview Content */,
 			);
@@ -127,6 +171,61 @@
 			path = reelsyncUITests;
 			sourceTree = "<group>";
 		};
+		817B96BD273E887A0062E6AF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				817B96BE273E888B0062E6AF /* SoundMeta.swift */,
+				81E2BB1D273EBD880069964F /* VideoTemplate.swift */,
+				81E2BB2A273F141A0069964F /* PhotoPickerModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		81E2BB18273E95560069964F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				81E2BB1B273EB2570069964F /* ReelsyncViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		81E2BB1F273ECEE60069964F /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				81E2BB20273ECF330069964F /* PhotoProcessor.swift */,
+				81E2BB22273ECF9B0069964F /* ReelDatabase.swift */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		81E2BB24273EEFB50069964F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				81E2BB19273E96530069964F /* PhotoPicker.swift */,
+				817B9688273E827C0062E6AF /* HomeView.swift */,
+				817B96BA273E87D10062E6AF /* ReelDetailView.swift */,
+				81E2BB25273EF0C60069964F /* VideoSDKView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		81E2BB27273F00DD0069964F /* SampleData */ = {
+			isa = PBXGroup;
+			children = (
+				81E2BB34274179600069964F /* SampleImg1.jpg */,
+				81E2BB312741795F0069964F /* SampleImg2.jpg */,
+				81E2BB2F2741795F0069964F /* SampleImg3.jpg */,
+				81E2BB2D2741795E0069964F /* SampleImg4.jpg */,
+				81E2BB302741795F0069964F /* SampleImg5.jpg */,
+				81E2BB2E2741795E0069964F /* SampleImg6.jpg */,
+				81E2BB35274179600069964F /* SampleImg7.jpg */,
+				81E2BB332741795F0069964F /* SampleImg8.jpg */,
+				81E2BB322741795F0069964F /* SampleImg9.jpg */,
+				81E2BB28273F00EC0069964F /* skater.mp4 */,
+			);
+			path = SampleData;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,6 +233,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 817B96A7273E827E0062E6AF /* Build configuration list for PBXNativeTarget "reelsync" */;
 			buildPhases = (
+				81E2BB2C274171EB0069964F /* ShellScript */,
 				817B967F273E827C0062E6AF /* Sources */,
 				817B9680273E827C0062E6AF /* Frameworks */,
 				817B9681273E827C0062E6AF /* Resources */,
@@ -143,6 +243,9 @@
 			dependencies = (
 			);
 			name = reelsync;
+			packageProductDependencies = (
+				817B96B4273E84C00062E6AF /* VideoEditorSDK */,
+			);
 			productName = reelsync;
 			productReference = 817B9683273E827C0062E6AF /* reelsync.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +318,9 @@
 				Base,
 			);
 			mainGroup = 817B967A273E827C0062E6AF;
+			packageReferences = (
+				817B96B3273E84C00062E6AF /* XCRemoteSwiftPackageReference "vesdk-ios-build" */,
+			);
 			productRefGroup = 817B9684273E827C0062E6AF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -231,8 +337,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81E2BB3E274179600069964F /* SampleImg7.jpg in Resources */,
+				81E2BB3C274179600069964F /* SampleImg8.jpg in Resources */,
+				81E2BB37274179600069964F /* SampleImg6.jpg in Resources */,
+				81E2BB3D274179600069964F /* SampleImg1.jpg in Resources */,
 				817B968E273E827D0062E6AF /* Preview Assets.xcassets in Resources */,
 				817B968B273E827D0062E6AF /* Assets.xcassets in Resources */,
+				81E2BB39274179600069964F /* SampleImg5.jpg in Resources */,
+				81E2BB3A274179600069964F /* SampleImg2.jpg in Resources */,
+				81E2BB38274179600069964F /* SampleImg3.jpg in Resources */,
+				81E2BB3B274179600069964F /* SampleImg9.jpg in Resources */,
+				81E2BB36274179600069964F /* SampleImg4.jpg in Resources */,
+				81E2BB29273F00EC0069964F /* skater.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,13 +368,42 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		81E2BB2C274171EB0069964F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint autocorrect && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		817B967F273E827C0062E6AF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				817B9689273E827C0062E6AF /* ContentView.swift in Sources */,
-				817B9687273E827C0062E6AF /* reelsyncApp.swift in Sources */,
+				817B96BF273E888B0062E6AF /* SoundMeta.swift in Sources */,
+				817B9689273E827C0062E6AF /* HomeView.swift in Sources */,
+				817B96BB273E87D10062E6AF /* ReelDetailView.swift in Sources */,
+				81E2BB2B273F141A0069964F /* PhotoPickerModel.swift in Sources */,
+				81E2BB1A273E96530069964F /* PhotoPicker.swift in Sources */,
+				817B9687273E827C0062E6AF /* ReelsyncApp.swift in Sources */,
+				81E2BB26273EF0C60069964F /* VideoSDKView.swift in Sources */,
+				81E2BB21273ECF330069964F /* PhotoProcessor.swift in Sources */,
+				81E2BB1E273EBD880069964F /* VideoTemplate.swift in Sources */,
+				81E2BB23273ECF9B0069964F /* ReelDatabase.swift in Sources */,
+				81E2BB1C273EB2570069964F /* ReelsyncViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,6 +744,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		817B96B3273E84C00062E6AF /* XCRemoteSwiftPackageReference "vesdk-ios-build" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/imgly/vesdk-ios-build";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		817B96B4273E84C00062E6AF /* VideoEditorSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 817B96B3273E84C00062E6AF /* XCRemoteSwiftPackageReference "vesdk-ios-build" */;
+			productName = VideoEditorSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 817B967B273E827C0062E6AF /* Project object */;
 }

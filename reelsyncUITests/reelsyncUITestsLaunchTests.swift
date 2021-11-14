@@ -7,7 +7,7 @@
 
 import XCTest
 
-class reelsyncUITestsLaunchTests: XCTestCase {
+class ReelsyncUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

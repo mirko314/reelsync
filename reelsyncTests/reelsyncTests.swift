@@ -7,7 +7,7 @@
 
 import XCTest
 @testable import reelsync
-
+// swiftlint:disable all
 class reelsyncTests: XCTestCase {
 
     override func setUpWithError() throws {

@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ImglyKit",
+        "repositoryURL": "https://github.com/imgly/imglykit-sp.git",
+        "state": {
+          "branch": null,
+          "revision": "6ed32732b3fc1005b53f868110c28b8e84bafdcc",
+          "version": "10.28.0"
+        }
+      },
+      {
+        "package": "VideoEditorSDK",
+        "repositoryURL": "https://github.com/imgly/vesdk-ios-build",
+        "state": {
+          "branch": null,
+          "revision": "29db95c1b7895fd0963101a0fe89b7a33ecf551c",
+          "version": "10.28.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
