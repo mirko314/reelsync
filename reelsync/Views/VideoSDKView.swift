@@ -66,11 +66,29 @@ struct VideoSDKView: UIViewControllerRepresentable {
 
         let tmpUrls = urls
 
-        let videos = urls.isEmpty ? Video(assets: videosUrls) : Video(assets: tmpUrls.compactMap { AVURLAsset(url: $0) })
+      let videos = urls.isEmpty ? Video(assets: videosUrls, size: CGSize(width: 350, height: 470)) : Video(assets: tmpUrls.compactMap { AVURLAsset(url: $0) }, size: CGSize(width: 350, height: 470))
 //        let videos = asset != nil ? asset! : Video(assets: videos_urls)
-        let videoEditViewController = createVideoEditViewController(with: videos )
+      let videoEditViewController = createVideoEditViewController(with: videos, and: buildPhotoEditModel(), context: context )
         return videoEditViewController
     }
+
+  private func buildPhotoEditModel() -> PhotoEditModel {
+    var videoClips = [VideoClipModel]()
+
+    for _ in 0..<8 {
+      var videoClipModel = VideoClipModel(identifier: "video_" + UUID().uuidString)
+      videoClipModel.trimModel = TrimModel(startTime: CMTime.zero, endTime: CMTime(seconds: 0.2, preferredTimescale: CMTimeScale(90000)))
+      videoClips.append(videoClipModel)
+    }
+
+    let objcCompositionModel = _ObjCCompositionModel(clips: videoClips)
+    let objcPhotoEditModel = _ObjCPhotoEditModel()
+    objcPhotoEditModel.compositionModel = objcCompositionModel
+
+    var photoEditModel = objcPhotoEditModel.photoEditModel
+    // TODO: Edit
+    return photoEditModel
+  }
 
     private func buildConfiguration() -> Configuration {
         let configuration = Configuration { builder in
@@ -84,6 +102,8 @@ struct VideoSDKView: UIViewControllerRepresentable {
 
             // Configure editor
             builder.configureVideoEditViewController { options in
+              options.navigationControllerMode = .useToolbar
+
                 var menuItems = PhotoEditMenuItem.defaultItems
                 menuItems.swapAt(0, 1) // Swap first two tools
 
@@ -105,13 +125,13 @@ struct VideoSDKView: UIViewControllerRepresentable {
         return configuration
     }
 
-    private func createVideoEditViewController(with video: Video, and photoEditModel: PhotoEditModel = PhotoEditModel()) -> VideoEditViewController {
+  private func createVideoEditViewController(with video: Video, and photoEditModel: PhotoEditModel = PhotoEditModel(), context: Context) -> VideoEditViewController {
         let configuration = buildConfiguration()
 
         // Create a video edit view controller
         let videoEditViewController = VideoEditViewController(videoAsset: video, configuration: configuration, photoEditModel: photoEditModel)
         //                                        videoEditViewController.modalPresentationStyle = .fullScreen
-        //                                        videoEditViewController.delegate = self
+    videoEditViewController.delegate = context.coordinator
 
         return videoEditViewController
     }
