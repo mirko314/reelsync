@@ -15,6 +15,64 @@ import PhotosUI
 
 // swiftlint:disable all
 
+extension UIImage {
+
+func crop(to:CGSize) -> UIImage {
+
+    guard let cgimage = self.cgImage else { return self }
+
+    let contextImage: UIImage = UIImage(cgImage: cgimage)
+
+    guard let newCgImage = contextImage.cgImage else { return self }
+
+    let contextSize: CGSize = contextImage.size
+
+    //Set to square
+    var posX: CGFloat = 0.0
+    var posY: CGFloat = 0.0
+    let cropAspect: CGFloat = to.width / to.height
+
+    var cropWidth: CGFloat = to.width
+    var cropHeight: CGFloat = to.height
+
+    if to.width > to.height { //Landscape
+        cropWidth = contextSize.width
+        cropHeight = contextSize.width / cropAspect
+        posY = (contextSize.height - cropHeight) / 2
+    } else if to.width < to.height { //Portrait
+        cropHeight = contextSize.height
+        cropWidth = contextSize.height * cropAspect
+        posX = (contextSize.width - cropWidth) / 2
+    } else { //Square
+        if contextSize.width >= contextSize.height { //Square on landscape (or square)
+            cropHeight = contextSize.height
+            cropWidth = contextSize.height * cropAspect
+            posX = (contextSize.width - cropWidth) / 2
+        }else{ //Square on portrait
+            cropWidth = contextSize.width
+            cropHeight = contextSize.width / cropAspect
+            posY = (contextSize.height - cropHeight) / 2
+        }
+    }
+
+    let rect: CGRect = CGRect(x: posX, y: posY, width: cropWidth, height: cropHeight)
+
+    // Create bitmap image from context using the rect
+    guard let imageRef: CGImage = newCgImage.cropping(to: rect) else { return self}
+
+    // Create a new image based on the imageRef and rotate back to the original orientation
+    let cropped: UIImage = UIImage(cgImage: imageRef, scale: self.scale, orientation: self.imageOrientation)
+
+    UIGraphicsBeginImageContextWithOptions(to, false, self.scale)
+    cropped.draw(in: CGRect(x: 0, y: 0, width: to.width, height: to.height))
+    let resized = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+
+    return resized ?? self
+  }
+}
+
+
 func saveVideoToLibrary(videoURL: URL) {
 
     PHPhotoLibrary.shared().performChanges({
@@ -31,7 +89,9 @@ func saveVideoToLibrary(videoURL: URL) {
     }
 }
 //  func buildVideoFromImageArray(framesArray:[UIImage]) {
-func buildVideoFromImageArray(framesArray: [UIImage], videoPath: String = "OutputVideo.mp4", frameDuration: Double = 5, onComplete: @escaping (_ videoUrl: URL) -> Void = {_ in }) {
+func buildVideoFromImageArray(framesArray: [UIImage], videoOutputURL: URL, frameDuration: Double = 5, outputWidth: CGFloat?, outputHeight: CGFloat?) async -> URL? {
+    
+    return await withCheckedContinuation { continuation in
     print("START BUILDING VIDEO ")
     //    Somehow videos are broken with only one frame, so alwazys add 2
     var images = framesArray + [framesArray[framesArray.count - 1]]
@@ -39,14 +99,8 @@ func buildVideoFromImageArray(framesArray: [UIImage], videoPath: String = "Outpu
         print("images not found")
         return
     }
-    let outputSize = CGSize(width: images[0].size.width, height: images[0].size.height)
-    let fileManager = FileManager.default
-    let urls = fileManager.urls(for: .cachesDirectory, in: .userDomainMask)
-    guard let documentDirectory = urls.first else {
-        fatalError("documentDir Error")
-    }
-
-    let videoOutputURL = documentDirectory.appendingPathComponent(videoPath)
+    let outputSize = CGSize(width: (outputWidth ?? images[0].size.width), height: (outputHeight ?? images[0].size.height))
+    
 
     if FileManager.default.fileExists(atPath: videoOutputURL.path) {
         do {
@@ -92,7 +146,7 @@ func buildVideoFromImageArray(framesArray: [UIImage], videoPath: String = "Outpu
 
             while !images.isEmpty {
                 if videoWriterInput.isReadyForMoreMediaData {
-                    let nextPhoto = images.remove(at: 0)
+                    let nextPhoto = images.remove(at: 0).crop(to: outputSize)
 
                     let presentationTime = CMTimeMakeWithSeconds((Double(frameCount) * frameDuration / 2), preferredTimescale: fps)
 
@@ -143,8 +197,14 @@ func buildVideoFromImageArray(framesArray: [UIImage], videoPath: String = "Outpu
             videoWriterInput.markAsFinished()
 
             return videoWriter.finishWriting(completionHandler: {
-                onComplete(videoOutputURL)
+                
+                DispatchQueue.main.sync {
+                    continuation.resume(returning: videoOutputURL)
+                }
+                
+//                onComplete(videoOutputURL)
             })
         })
+    }
     }
 }

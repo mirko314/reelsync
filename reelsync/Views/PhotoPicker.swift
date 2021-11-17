@@ -16,7 +16,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
 
     func makeUIViewController(context: Context) -> PHPickerViewController {
         var config = PHPickerConfiguration()
-        config.filter = .any(of: [.images, .videos, .livePhotos])
+        config.filter = .any(of: [.images])
         config.selectionLimit = 0 // context.coordinator.
         config.preferredAssetRepresentationMode = .current
 
@@ -83,9 +83,61 @@ struct PhotoPicker: UIViewControllerRepresentable {
                         }
                     } else {
                         if let livePhoto = object as? PHLivePhoto {
-                            DispatchQueue.main.async {
-                                self.photoPicker.mediaItems.append(item: PhotoPickerModel(with: livePhoto))
+                            let livePhotoResources = PHAssetResource.assetResources(for: livePhoto)
+
+                            // Extract still images from Live Photo properties(HEIC format)
+                            if let imageUrl = livePhoto.value(forKey: "imageURL") as? URL {
+                                do {
+                                    let data: Data = try Data(contentsOf: imageUrl)
+
+                                    var image = UIImage(data: data)
+                                    guard image != nil else {
+                                        return
+                                    }
+                                  DispatchQueue.main.async {
+                                      self.photoPicker.mediaItems.append(item: PhotoPickerModel(with: image!))
+                                  }
+                                } catch {
+
+                                }
+
+//                                [UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]]
+
                             }
+
+                                // Generate Data from URL (can be obtained because it refers to the data in HEIC
+//                                        let data:Data = try Data(contentsOf: imageUrl)
+
+                                // Generate a path and save the image
+                                // data.write(to: URL)
+
+                            for resource in livePhotoResources {
+
+                                }
+//                                let fileManager = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first.appendingPathComponent(UUID().uuidString() + "")
+//                                let urls = fileManager
+//                                guard let documentDirectory = urls.first else {
+//                                    fatalError("documentDir Error")
+//                                }
+//                                return documentDirectory
+//                                PHAssetResourceManager.defaultManager().writeDataForAssetResource(resource,
+//                                    toFile: fileURL, options: nil, completionHandler:
+//                                  {
+//
+//                                     // Video file has been written to path specified via fileURL
+//                                    if resource.type == PHAssetResourceType.pairedVideo {
+//                                        print("Retreiving live photo data for : paired video")
+//                                    }
+//
+//                                    if resource.type == PHAssetResourceType.photo {
+//                                        print("Retreiving live photo data for : photo")
+//                                    }
+
+//
+//                            DispatchQueue.main.async {
+//
+//                                self.photoPicker.mediaItems.append(item: PhotoPickerModel(with: livePhoto))
+//                            }
                         }
                     }
                 }

@@ -24,8 +24,11 @@ struct VideoTimeline {
     }
 
     mutating func importMedia(slotIndex: Int, media: PhotoPickerModel) {
-        fillableSlots[slotIndex].setMedia(media: media)
-        print("importing", slotIndex, media)
+        guard slotIndex < fillableSlots.count else {
+            return
+        }
+        fillableSlots[slotIndex].media = media
+//        = media.setMedia(media: media)
     }
     mutating func convertAllPhotos() {
         for index in fillableSlots.indices {
@@ -51,14 +54,14 @@ struct FillableSlot: Identifiable {
     var media: PhotoPickerModel?
     var videoUrl: URL?
 
-    mutating func setMedia(media: PhotoPickerModel) {
-        self.media = media
+    var fileName: String {
+        String(self.id) + ".mp4"
     }
-    mutating func generateVideo() {
-        let filename = String(self.id) + ".mp4"
+
+    func calculateVideoPath() -> URL? {
         guard let photo = media?.photo else {
             print("NO PHOTO FOUND", media)
-            return
+            return nil
         }
 //        THIS SHOULD HAPPEN AFTER BUILDING IT BUT DOES NOT WORK CAUSE "escaping"
         let fileManager = FileManager.default
@@ -66,15 +69,19 @@ struct FillableSlot: Identifiable {
         guard let documentDirectory = urls.first else {
             fatalError("documentDir Error")
         }
+        return documentDirectory.appendingPathComponent(fileName)
+    }
 
-        let videoOutputURL = documentDirectory.appendingPathComponent(filename)
-
-        buildVideoFromImageArray(framesArray: [photo], videoPath: filename, frameDuration: self.slot.duration, onComplete: { videoUrl in
-            print("VIDEO GENERATED", videoUrl)
-//            self.videoUrl = videoUrl
-        })
-        print("END generateVideo", videoOutputURL)
-        self.videoUrl = videoOutputURL
+    mutating func setMedia(media: PhotoPickerModel) {
+        self.media = media
+    }
+    mutating func generateVideo() {
+//        buildVideoFromImageArray(framesArray: [photo], videoOutputURL: filename, frameDuration: self.slot.duration, onComplete: { videoUrl in
+//            print("VIDEO GENERATED", videoUrl)
+////            self.videoUrl = videoUrl
+//        })
+//        print("END generateVideo", videoOutputURL)
+//        self.videoUrl = videoOutputURL
     }
 
     var isFilled: Bool {

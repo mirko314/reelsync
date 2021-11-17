@@ -83,6 +83,7 @@
 		81E2BB332741795F0069964F /* SampleImg8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SampleImg8.jpg; sourceTree = "<group>"; };
 		81E2BB34274179600069964F /* SampleImg1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SampleImg1.jpg; sourceTree = "<group>"; };
 		81E2BB35274179600069964F /* SampleImg7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SampleImg7.jpg; sourceTree = "<group>"; };
+		81E2BB3F2741A3290069964F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +135,7 @@
 		817B9685273E827C0062E6AF /* reelsync */ = {
 			isa = PBXGroup;
 			children = (
+				81E2BB3F2741A3290069964F /* Info.plist */,
 				81E2BB27273F00DD0069964F /* SampleData */,
 				81E2BB24273EEFB50069964F /* Views */,
 				81E2BB1F273ECEE60069964F /* Lib */,
@@ -564,8 +566,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"reelsync/Preview Content\"";
+				DEVELOPMENT_TEAM = 7HXUD67ZNV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = reelsync/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -592,8 +596,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"reelsync/Preview Content\"";
+				DEVELOPMENT_TEAM = 7HXUD67ZNV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = reelsync/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

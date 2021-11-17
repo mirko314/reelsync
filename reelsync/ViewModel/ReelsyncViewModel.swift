@@ -11,6 +11,7 @@ import SwiftUI
 class ReelsyncViewModel: ObservableObject {
     @Published private var model: VideoTimeline?
     @Published var shouldShowDetailView = false
+    @Published var isPreparingMedia = false
     //
     //    static func createReelMaker(videoTimeline: VideoTimeline) {
     //
@@ -29,11 +30,11 @@ class ReelsyncViewModel: ObservableObject {
     var filledSlotsCount: Int {
         model?.fillableSlots.filter {$0.isFilled}.count ?? 0
     }
-    var readySlots: [FillableSlot] {
-        model?.fillableSlots.filter {$0.isPrepared} ?? []
-    }
     var allSlotsFilled: Bool {
         filledSlotsCount == fillableSlots.count
+    }
+    var readySlots: [FillableSlot] {
+        model?.fillableSlots.filter {$0.isPrepared} ?? []
     }
     var allSlotsReady: Bool {
         readySlots.count == fillableSlots.count
@@ -44,9 +45,33 @@ class ReelsyncViewModel: ObservableObject {
         model?.importMedia(slotIndex: slotIndex, media: media)
         self.objectWillChange.send()
     }
-    func prepareMedia() {
+    func prepareMedia() async {
         print("preparing images")
-        model?.convertAllPhotos()
+        isPreparingMedia = true
+
+        for index in fillableSlots.indices {
+            await prepareSingleVideo(for: index)
+        }
+
+        DispatchQueue.main.sync {
+            isPreparingMedia = false
+        }
+    }
+    func prepareSingleVideo(for index: Int) async {
+        let slot: FillableSlot = (self.model?.fillableSlots[index])!
+        let photo: UIImage = slot.media!.photo!
+
+        let videoUrl = await buildVideoFromImageArray(
+            framesArray: [photo],
+            videoOutputURL: slot.calculateVideoPath()!,
+            frameDuration: slot.slot.duration,
+            outputWidth: CGFloat(1080),
+            outputHeight: CGFloat(1920)
+        )
+        DispatchQueue.main.sync {
+            self.model?.fillableSlots[index].videoUrl = videoUrl
+        }
+
     }
 
     func fetchVideoTemplate(url: String) {

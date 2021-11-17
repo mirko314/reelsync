@@ -12,12 +12,13 @@ struct HomeView: View {
 
     @State private var instagramUrl: String = ""
     @State private var isShowingReelDetailView = false
+//    var gridLayout = Array(repeating: LazyVGrid.init(LazyVGrid.flexible()), count: 8)
 
     @FocusState private var emailFieldIsFocused: Bool
     var body: some View {
 
         NavigationView {
-            VStack {
+            VStack(alignment: .leading) {
                 NavigationLink(
                     destination: ReelDetailView(
                         reelsyncViewModel: reelsyncViewModel
@@ -25,9 +26,9 @@ struct HomeView: View {
                     isActive: $isShowingReelDetailView
                 ) { EmptyView() }
                 HStack {
-
                     Button(action: getUrlFromClipboard) {
-                        Text("📄")
+                        Image(systemName: "doc.on.clipboard")
+
                     }
                     TextField(
                         "Instagram URL",
@@ -41,10 +42,26 @@ struct HomeView: View {
                         .disableAutocorrection(true)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     Button(action: fetchSoundAction) {
-                        Text("Fetch 🔎")
+                        Text("Fetch")
+                        Image(systemName: "magnifyingglass.circle")
+                    }
+                }
+                VStack {
+                    Text("Trending Audio").font(.largeTitle)
+
+                    LazyVGrid(columns: [
+                        GridItem(.adaptive(minimum: 20))
+                    ], spacing: 20) {
+                        ForEach((1...100).map { "Item \($0)" }, id: \.self) { _ in
+                            Rectangle()
+                                .fill(Color.red)
+                                .frame(width: 20, height: 20)
+//                            Text(item)
+                        }
                     }
                 }
 
+                Text("Reel Ideas").font(.largeTitle)
             }.padding(20) .navigationTitle("Reel Sync")
         }
     }
